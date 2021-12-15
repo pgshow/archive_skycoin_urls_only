@@ -67,7 +67,7 @@ if __name__ == '__main__':
     logger.info(f'get {len(link_list)} links for this website on Archive')
 
     # scraping the html and files from Archive
-    with ThreadPoolExecutor(max_workers=2) as t:
+    with ThreadPoolExecutor(max_workers=config.Threading_Num) as t:
         all_task = []
         for link in link_list:
             all_task.append(t.submit(scrape, link, lock_db, lock_csv))
